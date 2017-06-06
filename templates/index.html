@@ -1,0 +1,41 @@
+{% extends "master.html" %}
+
+{% block home %}
+class="current"
+{% endblock %}
+
+{#Title#}
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block bodyWidth %}
+    <div class="bgimg-1">
+    <div class="caption">
+    <span class="border">TRACKBOARD</span><br>
+    <span class="border">ANALYSE YOUR DATA</span>
+    </div>
+    </div>
+
+    <div class="wrapper">
+    <figure>
+        <img src="{{ url_for("static",filename="images/step1.jpg") }}" alt="flamingo">
+        <figcaption><p>Apply Trackboard</p></figcaption>
+    </figure>
+
+    <figure>
+        <img src="{{ url_for("static",filename="images/step2.jpg") }}" alt="flamingo">
+        <figcaption><p>Start skating</p></figcaption>
+    </figure>
+
+    <figure>
+        <img src="{{ url_for("static",filename="images/step3.jpg") }}" alt="flamingo">
+        <figcaption><p>Analyze your data</p></figcaption>
+    </figure>
+    </div>
+
+{% endblock %}
+
+{#Body#}
+{% block body %}
+{% endblock %}

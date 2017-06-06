@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/stylesheet.css") }}">
+</head>
+
+<body>
+
+
+<header>
+    <a href="{{ url_for("index") }}"><h1 id="logo">TrackBoard</h1></a>
+<nav>
+    <ul>
+        <li><a {% block home %} {% endblock %} href="{{ url_for("index") }}">Home</a></li>
+        <li><a {% block statistics %} {% endblock %} href="{{ url_for("statistics") }}">Statistics</a></li>
+    {% if 'logged_in' in session %}
+        <li><a href="{{ url_for("logout") }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for("login") }}">Login</a></li>
+    {% endif %}
+    </ul>
+</nav>
+</header>
+
+{% block bodyWidth %} {% endblock %}
+
+<section>
+{% block body %}
+{% endblock %}
+</section>
+
+</body>
+</html>
