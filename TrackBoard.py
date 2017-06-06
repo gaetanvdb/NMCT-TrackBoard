@@ -56,8 +56,7 @@ def logout():
 @login_required
 def statistics():
     gebruikersnaam = session.get('username', None)
-    flash(gebruikersnaam)
-    return render_template("statistics.html")
+    return render_template("statistics.html", gebruikersnaam = gebruikersnaam)
 
 @app.route('/sessions')
 def sessions():
