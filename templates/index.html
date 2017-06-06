@@ -16,15 +16,13 @@ Homepage
     <span class="border">ANALYSE YOUR DATA</span>
     </div>
     </div>
+{% endblock %}
 
+{#Body#}
+{% block body %}
     <div class="wrapper">
         {{ macro.build_figure("step1.jpg", "Apply trackboard")}}
         {{ macro.build_figure("step2.jpg", "Start skating")}}
         {{ macro.build_figure("step3.jpg", "Analyze your data")}}
     </div>
-
-{% endblock %}
-
-{#Body#}
-{% block body %}
 {% endblock %}
