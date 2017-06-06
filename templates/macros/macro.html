@@ -1,0 +1,7 @@
+{% macro build_figure(file,naam) %}
+    <figure>
+        <img src="{{ url_for("static",filename="images/" + file) }}"
+             alt="{{ naam }}">
+        <figcaption><p>{{ naam }}</p></figcaption>
+    </figure>
+{% endmacro %}

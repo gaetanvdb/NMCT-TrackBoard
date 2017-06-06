@@ -1,11 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, g
 from functools import wraps
 import os
 from DbClass import DbClass
 
 app = Flask(__name__)
 app.secret_key = "y0SP04}7K.:rbB+)9-&m:cl/j<o7j_sPG#vV?yL(i7HYx[53Y!}WW<oy`DA,p!Z"
-
 
 #Login vereist def
 def login_required(f):
@@ -40,6 +39,7 @@ def login():
             else:
                 session['logged_in'] = True
                 session['username'] = user_credentials[0]
+                g.user = user_credentials[0]
                 flash('you were just logged in!')
                 return redirect(url_for("statistics"))
         else:
