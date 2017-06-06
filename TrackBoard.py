@@ -39,6 +39,7 @@ def login():
                 error = 'invalid credentials. Please try again.'
             else:
                 session['logged_in'] = True
+                session['username'] = user_credentials[0]
                 flash('you were just logged in!')
                 return redirect(url_for("statistics"))
         else:
@@ -54,6 +55,8 @@ def logout():
 @app.route('/statistics')
 @login_required
 def statistics():
+    gebruikersnaam = session.get('username', None)
+    flash(gebruikersnaam)
     return render_template("statistics.html")
 
 @app.route('/sessions')
