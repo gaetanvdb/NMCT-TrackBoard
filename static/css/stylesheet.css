@@ -300,13 +300,13 @@ body, html {
 .wrapper img{
 	vertical-align: middle;
 }
-figure {
+figure{
 	display: inline-block;
-	margin: 50px auto;
+	margin: auto;
 	position: relative;
-	width: 300px;
+	width: 30%;
 	height: auto;
-	padding: 0px 10px 0px 10px;
+	padding: 0px 10px 20px 10px;
 }
 
 figcaption {
@@ -359,9 +359,7 @@ figcaption p{
 	}
 
 	img {
-
 		margin-top: 20px;
-
 	}
 
 	table thead {
