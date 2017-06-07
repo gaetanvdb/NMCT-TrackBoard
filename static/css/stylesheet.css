@@ -112,6 +112,10 @@ p {
 
 /*TABLE*/
 
+table a{
+    color: #777;
+}
+
 .row {
   padding: 0.5em;
   text-align: left;
@@ -135,6 +139,13 @@ table tr:nth-child(even) {
 table tr td {
   padding: 0.5em;
   text-align: left;
+    color: #777;
+}
+table tr:hover{
+    background-color: lightsteelblue;
+}
+table tr:hover a{
+    color: white;
 }
 
 /*BUTTONS*/

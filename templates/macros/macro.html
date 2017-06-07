@@ -5,3 +5,12 @@
         <figcaption><p>{{ naam }}</p></figcaption>
     </figure>
 {% endmacro %}
+
+{# ----------------------------------------------------#}
+
+{% macro build_table(session,date, startTime, endTime) %}
+    <td><a href="{{ url_for("sessiondetail", sessionID=session)}}"><div style="height: 100%;width:100%">{{ session }}</div></a></td>
+    <td><a href="{{ url_for("sessiondetail", sessionID=session)}}"><div style="height: 100%;width:100%">{{ date }}</div></a></td>
+    <td><a href="{{ url_for("sessiondetail", sessionID=session)}}"><div style="height: 100%;width:100%">{{ startTime }}</div></a></td>
+    <td><a href="{{ url_for("sessiondetail", sessionID=session)}}"><div style="height: 100%;width:100%">{{ endTime }}</div></a></td>
+{% endmacro %}

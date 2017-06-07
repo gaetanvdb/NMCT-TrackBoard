@@ -20,6 +20,15 @@ class DbClass:
         self.__cursor.close()
         return result
 
+    def getSessions(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT sessionID, date, startTime, stopTime FROM tblsessions ORDER BY sessionID DESC;"
+
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchall()
+        self.__cursor.close()
+        return result
+
     def getDataFromDatabase(self):
         # Query zonder parameters
         sqlQuery = "SELECT * FROM tablename"

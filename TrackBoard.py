@@ -60,7 +60,9 @@ def statistics():
 
 @app.route('/sessions')
 def sessions():
-    return render_template("sessions.html")
+    db = DbClass()
+    sessionList = db.getSessions()
+    return render_template("sessions.html", sessionList=sessionList)
 
 @app.route('/sessiondetail/<sessionID>')
 def sessiondetail(sessionID):

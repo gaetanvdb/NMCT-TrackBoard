@@ -22,18 +22,11 @@ TrackBoard - Sessions
     </tr>
     </thead>
     <tbody>
+    {% for ses in sessionList %}
     <tr>
-        <td>1</td>
-        <td>2017-06-07</td>
-        <td>08:33</td>
-        <td>10:23</td>
+        {{ macro.build_table(ses[0], ses[1], ses[2], ses[3])}}
     </tr>
-    <tr>
-        <td>1</td>
-        <td>2017-06-07</td>
-        <td>08:33</td>
-        <td>10:23</td>
-    </tr>
+    {% endfor %}
     </tbody>
     </table>
 {% endblock %}
