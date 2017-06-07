@@ -12,8 +12,10 @@ TrackBoard - Statistics
 {#Body#}
 {% block body %}
     <div class="wrapper">
+    <div class="statistics">
     <a href="{{ url_for("sessions")}}"> {{ macro.build_figure("Sessions.jpg", "Sessions")}} </a>
     <a href="{{ url_for("weeklyoverview")}}">{{ macro.build_figure("Weekly.jpg", "Weekly overview")}}</a>
     <a href="{{ url_for("total")}}">{{ macro.build_figure("Total.jpg", "Total")}}</a>
+    </div>
     </div>
 {% endblock %}

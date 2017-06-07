@@ -124,12 +124,12 @@ table {
 table tr th {
   padding: 0.5em;
   text-align: left;
-  background-color: #aaa;
+  background-color: #004e81;
   color: #fff;
 }
 
 table tr:nth-child(even) {
-  background-color: #ddd;
+  background-color: rgba(0, 155, 255, 0.05);
 }
 
 table tr td {
@@ -317,9 +317,21 @@ figcaption {
 	background-color: white;
   	height: 40px;
 }
+
+
 figcaption p{
 	margin-top: 10px;
 	}
+/* ----------------- */
+
+.wrapper .statistics figcaption{
+	text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.wrapper .statistics figcaption p {
+	margin-left: 10px;
+}
 
 /*MEDIA QUERY = RESPONSIVE AANPASSINGEN*/
 @media only screen and (max-width : 740px) {
