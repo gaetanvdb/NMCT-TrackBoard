@@ -11,5 +11,9 @@ statistics
 
 {#Body#}
 {% block body %}
-    <h1> Statistics</h1>
+    <div class="wrapper">
+    {{ macro.build_figure("step2.jpg", "Sessions")}}
+    {{ macro.build_figure("step2.jpg", "Weekly overview")}}
+    {{ macro.build_figure("step2.jpg", "Total")}}
+    </div>
 {% endblock %}

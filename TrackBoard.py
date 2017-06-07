@@ -55,8 +55,8 @@ def logout():
 @app.route('/statistics')
 @login_required
 def statistics():
-    gebruikersnaam = session.get('username', None)
-    return render_template("statistics.html", gebruikersnaam = gebruikersnaam)
+    #gebruikersnaam = session.get('username', None)
+    return render_template("statistics.html") #gebruikersnaam = gebruikersnaam)
 
 @app.route('/sessions')
 def sessions():

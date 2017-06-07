@@ -8,7 +8,10 @@
 <body>
 
 <div class="login-page">
-  <div class="form">
+<img src="{{ url_for("static",filename="images/TrackBoardLogo_Blue.png")}}" alt="TrackBoard Logo">
+    <H1>Welcome back!</H1>
+    <H2>Login with your TrackBoard account to continue.</H2>
+    <div class="form">
     <form class="login-form" action="" method="post">
         <input type="text" placeholder="username" name="username" value="{{ request.form.username }}"/>
         <input type="password" placeholder="password" name="password" value="{{ request.form.password }}"/>

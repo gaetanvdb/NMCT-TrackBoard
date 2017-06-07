@@ -19,7 +19,6 @@
         <li><a {% block statistics %} {% endblock %} href="{{ url_for("statistics") }}">Statistics</a></li>
     {% if 'logged_in' in session %}
         <li><a href="{{ url_for("logout") }}">Logout</a></li>
-        <li></li>
     {% else %}
         <li><a href="{{ url_for("login") }}">Login</a></li>
     {% endif %}
