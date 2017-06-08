@@ -12,4 +12,16 @@ TrackBoard - Total
 {#Body#}
 {% block body %}
 <h1> Total</h1>
+    <div class="wrapper">
+{#      {{ macro.box("title","description", "color", "image") }}#}
+        {{ macro.box("TEST","total sessions", "#004e81", "006-skateboarder.png") }}
+        {{ macro.box("TEST","total time","#004e81", "005-time.png") }}
+        {{ macro.box("TEST", "average session time","#004e81", "005-time.png") }}
+        {{ macro.box("TEST","top speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box("TEST","average speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box("TEST","total distance","rgba(0, 78, 129, 0.80)", "003-distance-to-travel-between-two-points.png") }}
+        {{ macro.box("TEST","highest altitude","rgba(0, 78, 129, 0.60)", "002-upload.png") }}
+        {{ macro.box("TEST","lowest altitude","rgba(0, 78, 129, 0.60)", "001-download.png") }}
+        {{ macro.box("TEST","altitude difference","rgba(0, 78, 129, 0.60)", "000-difference.png") }}
+    </div>
 {% endblock %}
