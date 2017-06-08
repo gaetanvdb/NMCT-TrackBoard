@@ -12,4 +12,18 @@ TrackBoard - Weekly overview
 {#Body#}
 {% block body %}
 <h1> Weekly overview</h1>
+
+    <div class="wrapper">
+{#      {{ macro.box("title","description", "color", "image") }}#}
+        {{ macro.box("25","total sessions", "#004e81", "006-skateboarder.png") }}
+        {{ macro.box("04:33:22s","total time","#004e81", "005-time.png") }}
+        {{ macro.box("00:32:28", "average session time","#004e81", "005-time.png") }}
+        {{ macro.box("33 KM/H","top speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box("12 KM/H","average speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box("3.43 KM","total distance","rgba(0, 78, 129, 0.80)", "003-distance-to-travel-between-two-points.png") }}
+        {{ macro.box("32 M","highest altitude","rgba(0, 78, 129, 0.60)", "002-upload.png") }}
+        {{ macro.box("12 M","lowest altitude","rgba(0, 78, 129, 0.60)", "001-download.png") }}
+        {{ macro.box("20 M","altitude difference","rgba(0, 78, 129, 0.60)", "000-difference.png") }}
+    </div>
+
 {% endblock %}

@@ -14,3 +14,11 @@
     <td><a href="{{ url_for("sessiondetail", sessionID=session)}}"><div style="height: 100%;width:100%">{{ startTime }}</div></a></td>
     <td><a href="{{ url_for("sessiondetail", sessionID=session)}}"><div style="height: 100%;width:100%">{{ endTime }}</div></a></td>
 {% endmacro %}
+
+{% macro box(title, description, colorCode, image) %}
+    <div class="box" style="background-color: {{ colorCode }};)">
+        <h1>{{ title }}</h1>
+        <h2>{{ description }}</h2>
+        <img src="{{ url_for("static",filename="images/" + image) }}">
+    </div>
+{% endmacro %}
