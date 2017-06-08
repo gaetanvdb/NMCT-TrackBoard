@@ -102,6 +102,88 @@ class DbClass:
 # ------------------------------------------------------------------------------------------------
 
 
+
+    # ------------------------------------------------------------------------------------------------
+    # Queries for TOTAL
+    # ------------------------------------------------------------------------------------------------
+    def getTotalSessionCount(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT COUNT(sessionID) FROM tblsessions;"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+        # ------------------------------------------------------------------------------------------------
+
+    def getTotalTotalTime(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(stopTime) - TIME_TO_SEC(startTime))) AS 'Total Time' FROM tblsessions;"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+        # ------------------------------------------------------------------------------------------------
+
+    def getTotalAverageTime(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT SEC_TO_TIME(AVG(TIME_TO_SEC(stopTime) - TIME_TO_SEC(startTime))) AS 'AVG Time' FROM tblsessions;"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+        # ------------------------------------------------------------------------------------------------
+
+    def getTotalTopSpeed(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(MAX(speed),2) FROM tblgps;"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+        # ------------------------------------------------------------------------------------------------
+
+    def getTotalAverageSpeed(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(AVG(speed),2) FROM tblgps;"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+        # ------------------------------------------------------------------------------------------------
+
+    def getTotalHighestAltitude(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(MAX(altitude),2) FROM tblgps;"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+        # ------------------------------------------------------------------------------------------------
+
+    def getTotalLowestAltitude(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(MIN(altitude),2) FROM tblgps;"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+        # ------------------------------------------------------------------------------------------------
+
+    def getTotalAltitudeDifference(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE((MAX(altitude) - MIN(altitude)),2) as 'Altitude difference' FROM tblgps;"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        self.__cursor.close()
+        return result
+
+# ------------------------------------------------------------------------------------------------
+
+
     def getDataFromDatabase(self):
         # Query zonder parameters
         sqlQuery = "SELECT * FROM tablename"

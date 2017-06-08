@@ -86,7 +86,16 @@ def weeklyoverview():
 # -----------------------------------------------------------
 @app.route('/total')
 def total():
-    return render_template("total.html")
+    db = DbClass()
+    totalSessions = db.getTotalSessionCount()
+    totalTime = db.getTotalTotalTime()
+    averageTime = db.getTotalAverageTime()
+    topSpeed = db.getTotalTopSpeed()
+    averageSpeed = db.getTotalAverageSpeed()
+    highestAltitude = db.getTotalHighestAltitude()
+    lowestAltitude = db.getTotalLowestAltitude()
+    altitudeDifference = db.getTotalAltitudeDifference()
+    return render_template("total.html", totalSessions=totalSessions, totalTime=totalTime, averageTime=averageTime, topSpeed=topSpeed, averageSpeed=averageSpeed, highestAltitude=highestAltitude, lowestAltitude=lowestAltitude, altitudeDifference=altitudeDifference)
 
 
 if __name__ == '__main__':
