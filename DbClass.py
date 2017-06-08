@@ -44,8 +44,63 @@ class DbClass:
         sqlQuery = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(stopTime) - TIME_TO_SEC(startTime))) AS 'Total Time' FROM tblsessions WHERE date > (NOW() - INTERVAL 7 DAY);"
         self.__cursor.execute(sqlQuery)
         result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+# ------------------------------------------------------------------------------------------------
+    def getWeekAverageTime(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT SEC_TO_TIME(AVG(TIME_TO_SEC(stopTime) - TIME_TO_SEC(startTime))) AS 'Total Time' FROM tblsessions WHERE date > (NOW() - INTERVAL 7 DAY);"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+# ------------------------------------------------------------------------------------------------
+    def getWeekTopSpeed(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT MAX(speed) FROM tblgps WHERE sessionID IN (SELECT sessionID FROM tblsessions WHERE tblsessions.date > (NOW() - INTERVAL 7 DAY));"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+# ------------------------------------------------------------------------------------------------
+    def getWeekAverageSpeed(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT AVG(speed) FROM tblgps WHERE sessionID IN (SELECT sessionID FROM tblsessions WHERE tblsessions.date > (NOW() - INTERVAL 7 DAY));"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        #self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+# ------------------------------------------------------------------------------------------------
+    def getWeekHighestAltitude(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT MAX(altitude) FROM tblgps WHERE sessionID IN (SELECT sessionID FROM tblsessions WHERE tblsessions.date > (NOW() - INTERVAL 7 DAY));"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        #self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+# ------------------------------------------------------------------------------------------------
+    def getWeekLowestAltitude(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT MIN(altitude) FROM tblgps WHERE sessionID IN (SELECT sessionID FROM tblsessions WHERE tblsessions.date > (NOW() - INTERVAL 7 DAY));"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        #self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+# ------------------------------------------------------------------------------------------------
+    def getWeekAltitudeDifference(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT (MAX(altitude) - MIN(altitude)) as 'Altitude difference' FROM tblgps WHERE sessionID IN (SELECT sessionID FROM tblsessions WHERE tblsessions.date > (NOW() - INTERVAL 7 DAY));"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
         self.__cursor.close()
         return result
+
+# ------------------------------------------------------------------------------------------------
+
 
     def getDataFromDatabase(self):
         # Query zonder parameters
