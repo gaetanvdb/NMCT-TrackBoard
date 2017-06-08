@@ -18,11 +18,11 @@ TrackBoard - Weekly overview
         {{ macro.box(totalSessions[0] ,"total sessions", "#004e81", "006-skateboarder.png") }}
         {{ macro.box(totalTime[0],"total time","#004e81", "005-time.png") }}
         {{ macro.box(averageTime[0], "average session time","#004e81", "005-time.png") }}
-        {{ macro.box(topSpeed[0],"top speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
-        {{ macro.box(averageSpeed[0],"average speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box((topSpeed[0]|string) + " KM/H","top speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box((averageSpeed[0]|string) + " KM/H","average speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
         {{ macro.box("X.XX KM","total distance","rgba(0, 78, 129, 0.80)", "003-distance-to-travel-between-two-points.png") }}
-        {{ macro.box(highestAltitude[0],"highest altitude","rgba(0, 78, 129, 0.60)", "002-upload.png") }}
-        {{ macro.box(lowestAltitude[0],"lowest altitude","rgba(0, 78, 129, 0.60)", "001-download.png") }}
-        {{ macro.box(altitudeDifference[0],"altitude difference","rgba(0, 78, 129, 0.60)", "000-difference.png") }}
+        {{ macro.box((highestAltitude[0]|string) + "  M","highest altitude","rgba(0, 78, 129, 0.60)", "002-upload.png") }}
+        {{ macro.box((lowestAltitude[0]|string) + "  M","lowest altitude","rgba(0, 78, 129, 0.60)", "001-download.png") }}
+        {{ macro.box((altitudeDifference[0]|string) + "  M","altitude difference","rgba(0, 78, 129, 0.60)", "000-difference.png") }}
     </div>
 {% endblock %}
