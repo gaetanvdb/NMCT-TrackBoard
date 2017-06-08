@@ -28,6 +28,24 @@ class DbClass:
         result = self.__cursor.fetchall()
         self.__cursor.close()
         return result
+#------------------------------------------------------------------------------------------------
+    # Queries for weekly - overview
+# ------------------------------------------------------------------------------------------------
+    def getWeekSessionCount(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT COUNT(sessionID) as 'Total Sessions' FROM tblsessions WHERE date > (NOW() - INTERVAL 7 DAY);"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        #self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+# ------------------------------------------------------------------------------------------------
+    def getWeekTotalTime(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(stopTime) - TIME_TO_SEC(startTime))) AS 'Total Time' FROM tblsessions WHERE date > (NOW() - INTERVAL 7 DAY);"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        self.__cursor.close()
+        return result
 
     def getDataFromDatabase(self):
         # Query zonder parameters

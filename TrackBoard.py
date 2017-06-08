@@ -68,10 +68,16 @@ def sessions():
 def sessiondetail(sessionID):
     return render_template("sessiondetail.html")
 
+# -----------------------------------------------------------
+
 @app.route('/weekly-overview')
 def weeklyoverview():
-    return render_template("weeklyoverview.html")
+    db = DbClass()
+    totalSessions = db.getWeekSessionCount()
+    totalTime = db.getWeekTotalTime()
+    return render_template("weeklyoverview.html", totalSessions=totalSessions, totalTime=totalTime)
 
+# -----------------------------------------------------------
 @app.route('/total')
 def total():
     return render_template("total.html")

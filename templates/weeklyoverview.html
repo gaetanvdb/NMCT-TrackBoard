@@ -15,8 +15,8 @@ TrackBoard - Weekly overview
 
     <div class="wrapper">
 {#      {{ macro.box("title","description", "color", "image") }}#}
-        {{ macro.box("25","total sessions", "#004e81", "006-skateboarder.png") }}
-        {{ macro.box("04:33:22s","total time","#004e81", "005-time.png") }}
+        {{ macro.box(totalSessions[0] ,"total sessions", "#004e81", "006-skateboarder.png") }}
+        {{ macro.box(totalTime[0],"total time","#004e81", "005-time.png") }}
         {{ macro.box("00:32:28", "average session time","#004e81", "005-time.png") }}
         {{ macro.box("33 KM/H","top speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
         {{ macro.box("12 KM/H","average speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
