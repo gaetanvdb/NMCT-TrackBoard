@@ -8,7 +8,6 @@ class DbClass:
             "passwd": "root",
             "db": "dbtrackboard"
         }
-
         self.__connection = connector.connect(**self.__dsn)
         self.__cursor = self.__connection.cursor()
 
