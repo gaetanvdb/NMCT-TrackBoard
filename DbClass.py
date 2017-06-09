@@ -181,16 +181,28 @@ class DbClass:
         return result
 
 # ------------------------------------------------------------------------------------------------
+# Voor coordinaten op map weer te geven
 # ------------------------------------------------------------------------------------------------
-# ------------------------------------------------------------------------------------------------
-
     def getCoordinates(self, paraID):
         # Query zonder parameters
         sqlQuery = "SELECT latitude, longitude FROM dbtrackboard.tblgps WHERE sessionID = '" + paraID + "';"
         self.__cursor.execute(sqlQuery)
         result = self.__cursor.fetchall()
+        #self.__cursor.close() pas sluiten na laatste query
+        return result
+# ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+# Voor speed en time weer te geven in tabel
+# ------------------------------------------------------------------------------------------------
+    def getSpeedAndTime(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT speed, time FROM dbtrackboard.tblgps WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchall()
         self.__cursor.close()
         return result
+# ------------------------------------------------------------------------------------------------
+
 
     def getDataFromDatabase(self):
         # Query zonder parameters

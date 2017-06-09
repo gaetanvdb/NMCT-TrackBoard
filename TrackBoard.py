@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from functools import wraps
 import os
 from DbClass import DbClass
+import distanceCalculator
 
 app = Flask(__name__)
 app.secret_key = "y0SP04}7K.:rbB+)9-&m:cl/j<o7j_sPG#vV?yL(i7HYx[53Y!}WW<oy`DA,p!Z"
@@ -66,7 +67,9 @@ def sessions():
 def sessiondetail(sessionID):
     db = DbClass()
     coordinates = db.getCoordinates(sessionID)
-    return render_template("sessiondetail.html", sessionID=sessionID, coordinates=coordinates)
+    speedAndTime = db.getSpeedAndTime(sessionID)
+    totaleAfstand = distanceCalculator.afstandBerekenen(coordinates)
+    return render_template("sessiondetail.html", sessionID=sessionID, coordinates=coordinates, speedAndTime=speedAndTime, totaleAfstand=totaleAfstand)
 
 # -----------------------------------------------------------
 

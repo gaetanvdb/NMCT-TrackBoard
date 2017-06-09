@@ -12,9 +12,36 @@ TrackBoard - Session detail
 {#Body#}
 {% block body %}
     <h1> Session {{ sessionID }} details:</h1>
+    <div id="sessionwrapper">
     <div id="map"></div>
+    <div id="gpstable">
+    <table>
+    <thead>
+    <tr>
+        <th>Speed</th>
+        <th>Time</th>
+    </tr>
+    </thead>
+    </table>
+    <div id="scroll">
+    <table>
+    <tbody>
+    {% for line in speedAndTime %}
+    <tr>
+        <td>{{ line[0] }} km/h</td>
+        <td>{{ line[1] }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
     <div id="info">
     <h1>INFO:</h1>
+    <p>LIJST: {{ coordinates }}</p>
+    <p>Totale afstand: {{ totaleAfstand }} KM</p>
     </div>
     <script>
       function initMap() {
