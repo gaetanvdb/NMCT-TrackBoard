@@ -7,7 +7,7 @@
     <title>{% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for("static",filename="css/stylesheet.css") }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
+{% block header %} {% endblock %}
 </head>
 
 <body>

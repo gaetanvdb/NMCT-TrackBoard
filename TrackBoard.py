@@ -97,6 +97,9 @@ def total():
     altitudeDifference = db.getTotalAltitudeDifference()
     return render_template("total.html", totalSessions=totalSessions, totalTime=totalTime, averageTime=averageTime, topSpeed=topSpeed, averageSpeed=averageSpeed, highestAltitude=highestAltitude, lowestAltitude=lowestAltitude, altitudeDifference=altitudeDifference)
 
+@app.route('/test')
+def test():
+    return render_template("test.html")
 
 if __name__ == '__main__':
     #flask op pc:
