@@ -43,6 +43,18 @@ TrackBoard - test
           strokeWeight: 2
         });
         flightPath.setMap(map);
+
+          function zoomToObject(obj){
+        var bounds = new google.maps.LatLngBounds();
+        var points = obj.getPath().getArray();
+        for (var n = 0; n < points.length ; n++){
+            bounds.extend(points[n]);
+        }
+        map.fitBounds(bounds);
+}
+
+flightPath.setMap(map);
+zoomToObject(flightPath);
       }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ4P0xGI2CO7M42_bAnyfe5JIwKwcjmzs&callback=initMap"> </script>
