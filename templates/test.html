@@ -13,7 +13,7 @@ TrackBoard - test
 
 {#Body#}
 {% block body %}
-
+    <h1> TEST MAP </h1>
     <div id="map"></div>
     <script>
 
@@ -39,12 +39,9 @@ TrackBoard - test
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
-
         flightPath.setMap(map);
+
       }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ4P0xGI2CO7M42_bAnyfe5JIwKwcjmzs&callback=initMap"> </script>
-
-
-    <h1> TEST MAP </h1>
 {% endblock %}

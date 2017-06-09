@@ -66,7 +66,7 @@ def sessions():
 
 @app.route('/sessiondetail/<sessionID>')
 def sessiondetail(sessionID):
-    return render_template("sessiondetail.html")
+    return render_template("sessiondetail.html", sessionID=sessionID)
 
 # -----------------------------------------------------------
 
