@@ -15,6 +15,9 @@ TrackBoard - test
 {% block body %}
     <h1> TEST MAP </h1>
     <div id="map"></div>
+    <div id="info">
+    <h1>INFO:</h1>
+    </div>
     <script>
 
       // This example creates a 2-pixel-wide red polyline showing the path of William
@@ -40,7 +43,6 @@ TrackBoard - test
           strokeWeight: 2
         });
         flightPath.setMap(map);
-
       }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ4P0xGI2CO7M42_bAnyfe5JIwKwcjmzs&callback=initMap"> </script>

@@ -66,7 +66,9 @@ def sessions():
 
 @app.route('/sessiondetail/<sessionID>')
 def sessiondetail(sessionID):
-    return render_template("sessiondetail.html", sessionID=sessionID)
+    db = DbClass()
+    coordinates = db.getCoordinates(sessionID)
+    return render_template("sessiondetail.html", sessionID=sessionID, coordinates=coordinates)
 
 # -----------------------------------------------------------
 

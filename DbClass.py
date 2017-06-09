@@ -13,7 +13,7 @@ class DbClass:
 
     def getUser(self, paraUser):
         # Query zonder parameters
-        sqlQuery = "SELECT username, password FROM tblusers WHERE username = '" + paraUser + "'"
+        sqlQuery = "SELECT username, password FROM tblusers WHERE username = '" + paraUser + "';"
         self.__cursor.execute(sqlQuery)
         result = self.__cursor.fetchone()
         self.__cursor.close()
@@ -181,7 +181,16 @@ class DbClass:
         return result
 
 # ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
 
+    def getCoordinates(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT latitude, longitude FROM dbtrackboard.tblgps WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchall()
+        self.__cursor.close()
+        return result
 
     def getDataFromDatabase(self):
         # Query zonder parameters
