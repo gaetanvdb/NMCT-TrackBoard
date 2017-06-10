@@ -323,7 +323,7 @@ body, html {
 
 /* CSS VOOR FIGURES */
 .box{
-    width: 250px;
+    width: 314px;
     height: 250px;
     margin: 5px;
 	position: relative;
@@ -331,7 +331,7 @@ body, html {
 }
 
 .box h1{
-    padding-top: 26%;
+    padding-top: 17%;
     padding-bottom: 0px;
     margin-bottom: 0px;
     color: white;
@@ -358,8 +358,13 @@ body, html {
 }
 
 /*----------------------*/
+#info{
+	width: 75%;
+    margin-top: 10px;
+}
+
 .box2{
-    width: 250px;
+    width: 240px;
     height: 75px;
     margin: 1px;
     position: relative;

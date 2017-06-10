@@ -68,8 +68,17 @@ def sessiondetail(sessionID):
     db = DbClass()
     coordinates = db.getCoordinates(sessionID)
     speedAndTime = db.getSpeedAndTime(sessionID)
+    sessionBegin = db.getSessionBegin(sessionID)
+    sessionEnd = db.getSessionEnd(sessionID)
+    sessionDuration = db.getSessionDuration(sessionID)
+    sessionTopSpeed = db.getSessionTopSpeed(sessionID)
+    sessionAverageSpeed = db.getSessionAverageSpeed(sessionID)
+    sessionHighestAltitude = db.getSessionHighestAltitude(sessionID)
+    sessionLowestAltitude = db.getSessionLowestAltitude(sessionID)
+    sessionAltitudeDifference = db.getSessionAltitudeDifference(sessionID)
+
     totaleAfstand = distanceCalculator.afstandBerekenen(coordinates)
-    return render_template("sessiondetail.html", sessionID=sessionID, coordinates=coordinates, speedAndTime=speedAndTime, totaleAfstand=totaleAfstand)
+    return render_template("sessiondetail.html", sessionID=sessionID, coordinates=coordinates, speedAndTime=speedAndTime, totaleAfstand=totaleAfstand, sessionBegin=sessionBegin, sessionEnd=sessionEnd, sessionDuration=sessionDuration, sessionTopSpeed=sessionTopSpeed, sessionAverageSpeed=sessionAverageSpeed, sessionHighestAltitude=sessionHighestAltitude, sessionLowestAltitude=sessionLowestAltitude, sessionAltitudeDifference=sessionAltitudeDifference)
 
 # -----------------------------------------------------------
 

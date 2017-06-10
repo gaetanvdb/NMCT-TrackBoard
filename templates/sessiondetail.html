@@ -39,16 +39,15 @@ TrackBoard - Session detail
     </div>
 
     <div id="info">
-    <h1>INFO:</h1>
-        {{ macro.box2("18:30:00" ,"Session begin", "#004e81", "005-time.png") }}
-        {{ macro.box2("19:00:00" ,"Session end","#004e81", "005-time.png") }}
-        {{ macro.box2("00:30:00", "Duration","#004e81", "005-time.png") }}
-        {{ macro.box2("04:03:28" ,"Top speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
-        {{ macro.box2("04:03:28" ,"Average speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box2(sessionBegin[0],"Session begin", "#004e81", "005-time.png") }}
+        {{ macro.box2(sessionEnd[0] ,"Session end","#004e81", "005-time.png") }}
+        {{ macro.box2(sessionDuration[0], "Duration","#004e81", "005-time.png") }}
+        {{ macro.box2((sessionTopSpeed[0]|string) + " KM/H" ,"Top speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box2((sessionAverageSpeed[0]|string) + " KM/H" ,"Average speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
         {{ macro.box2((totaleAfstand|string) + " KM" ,"Distance","rgba(0, 78, 129, 0.80)", "003-distance-to-travel-between-two-points.png") }}
-        {{ macro.box2("3" ,"highest altitude","rgba(0, 78, 129, 0.60)", "002-upload.png") }}
-        {{ macro.box2("04:03:28" ,"lowest altitude","rgba(0, 78, 129, 0.60)", "001-download.png") }}
-        {{ macro.box2("04:03:28" ,"altitude difference","rgba(0, 78, 129, 0.60)", "000-difference.png") }}
+        {{ macro.box2((sessionHighestAltitude[0]|string) + " M" ,"highest altitude","rgba(0, 78, 129, 0.60)", "002-upload.png") }}
+        {{ macro.box2((sessionLowestAltitude[0]|string) + " M" ,"lowest altitude","rgba(0, 78, 129, 0.60)", "001-download.png") }}
+        {{ macro.box2((sessionAltitudeDifference[0]|string) + " M" ,"altitude difference","rgba(0, 78, 129, 0.60)", "000-difference.png") }}
     </div>
     <script>
       function initMap() {

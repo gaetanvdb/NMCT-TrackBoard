@@ -179,7 +179,7 @@ class DbClass:
         result = self.__cursor.fetchone()
         self.__cursor.close()
         return result
-
+#######################################################################################################
 # ------------------------------------------------------------------------------------------------
 # Voor coordinaten op map weer te geven
 # ------------------------------------------------------------------------------------------------
@@ -199,9 +199,85 @@ class DbClass:
         sqlQuery = "SELECT speed, time FROM dbtrackboard.tblgps WHERE sessionID = '" + paraID + "';"
         self.__cursor.execute(sqlQuery)
         result = self.__cursor.fetchall()
-        self.__cursor.close()
+        #self.__cursor.close() # PAS SLUITEN NA ALLE QUERIES
         return result
 # ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+
+    def getSessionBegin(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT startTime FROM tblsessions WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+        # ------------------------------------------------------------------------------------------------
+
+    def getSessionEnd(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT stopTime FROM tblsessions WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+        # ------------------------------------------------------------------------------------------------
+
+    def getSessionDuration(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT SEC_TO_TIME(TIME_TO_SEC(stopTime) - TIME_TO_SEC(startTime)) AS 'Total Time' FROM tblsessions WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+        # ------------------------------------------------------------------------------------------------
+
+    def getSessionTopSpeed(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(MAX(speed),2) FROM tblgps WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+        # ------------------------------------------------------------------------------------------------
+
+    def getSessionAverageSpeed(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(AVG(speed),2) FROM tblgps WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+        # ------------------------------------------------------------------------------------------------
+    def getSessionHighestAltitude(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(MAX(altitude),2) FROM tblgps WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+        # ------------------------------------------------------------------------------------------------
+
+    def getSessionLowestAltitude(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(MIN(altitude),2) FROM tblgps WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        #self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+        # ------------------------------------------------------------------------------------------------
+
+    def getSessionAltitudeDifference(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE((MAX(altitude) - MIN(altitude)),2) as 'Altitude difference' FROM tblgps WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        self.__cursor.close()
+        return result
+#######################################################################################################
+
 
 
     def getDataFromDatabase(self):
