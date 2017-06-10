@@ -50,40 +50,40 @@ TrackBoard - Session detail
         {{ macro.box2((sessionAltitudeDifference[0]|string) + " M" ,"altitude difference","rgba(0, 78, 129, 0.60)", "000-difference.png") }}
     </div>
     <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: {lat: 51.0, lng: 3.8},
-          mapTypeId: 'terrain'
-        });
+          function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 8,
+              center: {lat: 51.0, lng: 3.8},
+              mapTypeId: 'terrain'
+            });
 
-        var flightPlanCoordinates = [
-            {% for latLng in coordinates %}
-          {lat: {{ latLng[0] }}, lng: {{ latLng[1] }}},
-            {% endfor %}
-        ];
-        var flightPath = new google.maps.Polyline({
-          path: flightPlanCoordinates,
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
-        });
-        flightPath.setMap(map);
-{#Map centreren op pad -------------------------#}
-          function zoomToObject(obj){
-        var bounds = new google.maps.LatLngBounds();
-        var points = obj.getPath().getArray();
-        for (var n = 0; n < points.length ; n++){
-            bounds.extend(points[n]);
-        }
-        map.fitBounds(bounds);
-{#----------------------------------------------#}
-}
+            var flightPlanCoordinates = [
+                {% for latLng in coordinates %}
+              {lat: {{ latLng[0] }}, lng: {{ latLng[1] }}},
+                {% endfor %}
+            ];
+            var flightPath = new google.maps.Polyline({
+              path: flightPlanCoordinates,
+              geodesic: true,
+              strokeColor: '#FF0000',
+              strokeOpacity: 1.0,
+              strokeWeight: 2
+            });
+            flightPath.setMap(map);
+    {#Map centreren op pad -------------------------#}
+              function zoomToObject(obj){
+            var bounds = new google.maps.LatLngBounds();
+            var points = obj.getPath().getArray();
+            for (var n = 0; n < points.length ; n++){
+                bounds.extend(points[n]);
+            }
+            map.fitBounds(bounds);
+    {#----------------------------------------------#}
+    }
 
-flightPath.setMap(map);
-zoomToObject(flightPath);
-      }
-    </script>
+    flightPath.setMap(map);
+    zoomToObject(flightPath);
+          }
+</script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ4P0xGI2CO7M42_bAnyfe5JIwKwcjmzs&callback=initMap"> </script>
 {% endblock %}
