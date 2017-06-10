@@ -22,3 +22,15 @@
         <img src="{{ url_for("static",filename="images/" + image) }}">
     </div>
 {% endmacro %}
+
+{% macro box2(title, description, colorCode, image) %}
+    <div class="box2" style="background-color: {{ colorCode }};)">
+    <div class="float-left">
+        <img src="{{ url_for("static",filename="images/" + image) }}">
+    </div>
+    <div class="float-right">
+        <h2>{{ description }}</h2>
+        <h1>{{ title }}</h1>
+    </div>
+    </div>
+{% endmacro %}

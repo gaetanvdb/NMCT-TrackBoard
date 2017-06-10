@@ -329,6 +329,7 @@ body, html {
 	position: relative;
 	display: inline-block;
 }
+
 .box h1{
     padding-top: 26%;
     padding-bottom: 0px;
@@ -355,6 +356,47 @@ body, html {
 .wrapper img{
 	vertical-align: middle;
 }
+
+/*----------------------*/
+.box2{
+    width: 250px;
+    height: 75px;
+    margin: 1px;
+    position: relative;
+    display: inline-block;
+    background-color: #004e81;
+}
+.box2 h2{
+    color: rgba(255, 255, 255, 0.81);
+    font-family: "Open Sans";
+    font-size: 12px;
+    margin-bottom: 2px;
+    text-align: center;
+}
+.box2 h1{
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.box2 img{
+    margin-top: 22px;
+    margin-left: 25px;
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+  margin-top: 15px;
+  margin-right: 40px;
+}
+
+/*----------------------*/
 figure{
 	display: inline-block;
 	margin: auto;

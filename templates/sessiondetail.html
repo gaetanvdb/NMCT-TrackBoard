@@ -40,8 +40,15 @@ TrackBoard - Session detail
 
     <div id="info">
     <h1>INFO:</h1>
-    <p>LIJST: {{ coordinates }}</p>
-    <p>Totale afstand: {{ totaleAfstand }} KM</p>
+        {{ macro.box2("18:30:00" ,"Session begin", "#004e81", "005-time.png") }}
+        {{ macro.box2("19:00:00" ,"Session end","#004e81", "005-time.png") }}
+        {{ macro.box2("00:30:00", "Duration","#004e81", "005-time.png") }}
+        {{ macro.box2("04:03:28" ,"Top speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box2("04:03:28" ,"Average speed","rgba(0, 78, 129, 0.80)", "004-speedometer.png") }}
+        {{ macro.box2((totaleAfstand|string) + " KM" ,"Distance","rgba(0, 78, 129, 0.80)", "003-distance-to-travel-between-two-points.png") }}
+        {{ macro.box2("3" ,"highest altitude","rgba(0, 78, 129, 0.60)", "002-upload.png") }}
+        {{ macro.box2("04:03:28" ,"lowest altitude","rgba(0, 78, 129, 0.60)", "001-download.png") }}
+        {{ macro.box2("04:03:28" ,"altitude difference","rgba(0, 78, 129, 0.60)", "000-difference.png") }}
     </div>
     <script>
       function initMap() {
