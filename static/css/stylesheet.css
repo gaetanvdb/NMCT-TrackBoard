@@ -9,6 +9,7 @@ body {
 	font-family: Lato, Arial, Helvetica, sans-serif;
 	background: #f9f9f9;
 	color: #555;
+    height: 100%;
 }
 
 #sessionwrapper{
@@ -323,7 +324,7 @@ body, html {
 
 /* CSS VOOR FIGURES */
 .box{
-    width: 314px;
+    width: 300px;
     height: 250px;
     margin: 5px;
 	position: relative;
@@ -364,7 +365,7 @@ body, html {
 }
 
 .box2{
-    width: 240px;
+    width: 230px;
     height: 75px;
     margin: 1px;
     position: relative;
@@ -437,6 +438,16 @@ figcaption p{
 	margin-left: 10px;
 }
 
+.footer{
+    position: relative;
+    bottom:0;
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #004e81;
+    text-align: center;
+    color: white;
+}
 /*MEDIA QUERY = RESPONSIVE AANPASSINGEN*/
 @media only screen and (max-width : 740px) {
 
