@@ -31,7 +31,6 @@ def login():
     if request.method == "POST":
         db = DbClass()
         user_credentials = db.getUser(request.form['username'])
-        print(user_credentials)
         if user_credentials: #Als de lijst NIET leeg is dan...
             if (user_credentials[1]) != request.form['password']:
                 error = 'invalid credentials. Please try again.'
