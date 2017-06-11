@@ -38,7 +38,6 @@ def login():
                 session['logged_in'] = True
                 session['username'] = user_credentials[0]
                 g.user = user_credentials[0]
-                flash('you were just logged in!')
                 return redirect(url_for("statistics"))
         else:
             error = 'invalid credentials. Please try again.'
