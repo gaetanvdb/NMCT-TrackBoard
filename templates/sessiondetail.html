@@ -14,12 +14,13 @@ TrackBoard - Session detail
     <h1> Session {{ sessionID }} details:</h1>
     <div id="sessionwrapper">
     <div id="map"></div>
+    {#BEGIN tabel --------------#}
     <div id="gpstable">
     <table>
     <thead>
     <tr>
-        <th>Speed</th>
-        <th>Time</th>
+        <th><span class="text">Speed</span></th>
+        <th><span class="text">Time</span></th>
     </tr>
     </thead>
     </table>
@@ -36,6 +37,7 @@ TrackBoard - Session detail
     </table>
     </div>
     </div>
+    {#---------------------#}
     </div>
 
     <div id="info">
