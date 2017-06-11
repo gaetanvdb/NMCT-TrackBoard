@@ -60,9 +60,7 @@ TrackBoard - Session detail
             });
 
             var flightPlanCoordinates = [
-                {% for latLng in coordinates %}
-              {lat: {{ latLng[0] }}, lng: {{ latLng[1] }}},
-                {% endfor %}
+                {% for latLng in coordinates %} {lat: {{ latLng[0] }}, lng: {{ latLng[1] }}}, {% endfor %}
             ];
             var flightPath = new google.maps.Polyline({
               path: flightPlanCoordinates,

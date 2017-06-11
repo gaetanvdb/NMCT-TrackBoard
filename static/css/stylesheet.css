@@ -26,12 +26,23 @@ body {
 
 #gpstable{
     margin-left: 75%;
-    height: 500px;
+    height: 460px;
 }
 
-#gpstable table{
-	overflow: auto;
+#gpstable #scroll{
+    height: 460px;
+    overflow: auto;
 }
+
+/*#gpstable ::-webkit-scrollbar{
+    width: 5px;
+}
+#gpstable ::-webkit-scrollbar-track {
+    background-color: #ECF4F9;
+}
+#gpstable ::-webkit-scrollbar-thumb{
+    background-color: #004e81;
+}*/
 
 a {
 	color: #FFF;
