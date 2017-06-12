@@ -12,6 +12,7 @@ TrackBoard - Weekly overview
 {#Body#}
 {% block body %}
 <h1> Weekly overview</h1>
+    <div id="date"></div>
 
     <div class="wrapper">
 {#      {{ macro.box("title","description", "color", "image") }}#}
@@ -25,4 +26,9 @@ TrackBoard - Weekly overview
         {{ macro.box((lowestAltitude[0]|string) + "  M","lowest altitude","rgba(0, 78, 129, 0.60)", "001-download.png") }}
         {{ macro.box((altitudeDifference[0]|string) + "  M","altitude difference","rgba(0, 78, 129, 0.60)", "000-difference.png") }}
     </div>
+    <script>
+       var tomorrow = new Date();
+       tomorrow.setDate(tomorrow.getDate(year) - 13);
+       //document.getElementById("date").innerHTML = tomorrow;
+    </script>
 {% endblock %}
