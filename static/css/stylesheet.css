@@ -281,6 +281,10 @@ body, html {
 .wrapper {
 	text-align: center;
 }
+.wrapper H1{
+    margin-top: -50px;
+    margin-bottom: 40px;
+}
 .wrapper img{
 	vertical-align: middle;
 }
@@ -410,6 +414,11 @@ footer {
     /*color: white;*/
     /*text-align: center;*/
 /*}*/
+
+.sessions img{
+    width: 16px;
+    height: 16px;
+}
 
 /*MEDIA QUERY = RESPONSIVE AANPASSINGEN*/
 @media only screen and (max-width : 740px) {

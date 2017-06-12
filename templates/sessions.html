@@ -11,6 +11,7 @@ TrackBoard - Sessions
 
 {#Body#}
 {% block body %}
+    <div class="sessions">
 <h1> Sessions</h1>
     <table>
     <thead>
@@ -19,6 +20,7 @@ TrackBoard - Sessions
         <th>Date</th>
         <th>Start time</th>
         <th>End time</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -29,6 +31,7 @@ TrackBoard - Sessions
     {% endfor %}
     </tbody>
     </table>
+    </div>
 {% endblock %}
 
 {% block footer %}
