@@ -84,6 +84,10 @@ TrackBoard - Session detail
     flightPath.setMap(map);
     zoomToObject(flightPath);
           }
-</script>
+    </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ4P0xGI2CO7M42_bAnyfe5JIwKwcjmzs&callback=initMap"> </script>
+{% endblock %}
+
+{% block footer %}
+    {{ macro.footer() }}
 {% endblock %}

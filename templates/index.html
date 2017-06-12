@@ -16,6 +16,7 @@ TrackBoard - Home
     <span class="border">ANALYSE YOUR DATA</span>
     </div>
     </div>
+    <style>body, html {  height: 100%;  }</style>
 {% endblock %}
 
 {#Body#}
@@ -25,4 +26,8 @@ TrackBoard - Home
         {{ macro.build_figure("step2.jpg", "Start skating")}}
         {{ macro.build_figure("step3.jpg", "Analyze your data")}}
     </div>
+{% endblock %}
+
+{% block footer %}
+    <div id="indexfooter">&copy; 2017 Gaetan Van Den Berge</div>
 {% endblock %}

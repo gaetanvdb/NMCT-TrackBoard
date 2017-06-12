@@ -1,5 +1,4 @@
 {% import "macros/macro.html" as macro %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,6 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 {% block header %} {% endblock %}
 </head>
-
 <body>
 <header>
     <a href="{{ url_for("index") }}"><h1 id="logo">TrackBoard</h1></a>
@@ -25,13 +23,12 @@
     </ul>
 </nav>
 </header>
-
 {% block bodyWidth %} {% endblock %}
 
 <section>
 {% block body %}
 {% endblock %}
 </section>
-{#<div class="footer"> Gaetan Van Den Berge - 2017</div>#}
+{% block footer %} {% endblock %}
 </body>
 </html>

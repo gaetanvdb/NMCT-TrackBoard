@@ -9,7 +9,6 @@ body {
 	font-family: Lato, Arial, Helvetica, sans-serif;
 	background: #f9f9f9;
 	color: #555;
-    height: 100%;
 }
 
 #sessionwrapper{
@@ -33,38 +32,21 @@ body {
     height: 460px;
     overflow: auto;
 }
-
-/*#gpstable ::-webkit-scrollbar{
-    width: 5px;
-}
-#gpstable ::-webkit-scrollbar-track {
-    background-color: #ECF4F9;
-}
-#gpstable ::-webkit-scrollbar-thumb{
-    background-color: #004e81;
-}*/
-
 a {
 	color: #FFF;
 	text-decoration: none;
 	font-weight: normal;
 
 }
-
 a:hover {
-
 	color: #444;
-
 }
-
 img {
 	width: 100%;
 }
 
 /*NAV*/
-
 header {
-
 	background: #009EFF;
 	width: 100%;
 	height: 76px;
@@ -72,25 +54,20 @@ header {
 	top: 0;
 	left: 0;
 	z-index: 100;
-
 }
 
 #logo{
-
 	margin: 20px;
 	float: left;
 	width: 200px;
 	height: 40px;
 	display: block;
     color: white;
-
 }
 
 nav {
-
 	float: right;
 	padding: 20px;
-
 }
 
 
@@ -116,35 +93,26 @@ li {
 }
 
 /*CONTENT*/
-
-
 section {
-
-	margin: 80px auto 40px;
+    margin: 80px auto 40px;
 	max-width: 980px;
 	position: relative;
 	padding: 20px 20px 20px 20px;
-
 }
 
 h1 {
-
 	font-size: 2em;
 	color: #009eff;
 	line-height: 1.15em;
 	margin: 20px 0 ;
-
 }
 
 p {
-
 	line-height: 1.45em;
 	margin-bottom: 20px;
-
 }
 
 /*TABLE*/
-
 table a{
     color: #777;
 }
@@ -243,65 +211,11 @@ table tr:hover a{
     background-color: #e96633;
 }
 
-
-/*FOOTER*/
-
-.footer-distributed{
-	background-color: #292c2f;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
-	width: 100%;
-	text-align: left;
-	font: medium 14px sans-serif;
-	padding: 45px 80px;
-	margin-top: 80px;
-}
-
-.footer-distributed .footer-left p{
-	color:  #8f9296;
-	font-size: 12px;
-	margin: 0;
-}
-
-.footer-distributed p.footer-links{
-	font-size:14px;
-	font-weight: normal;
-	color:  #ffffff;
-	margin: 0 0 10px;
-	padding: 0;
-}
-
-.footer-distributed p.footer-links a{
-	display:inline-block;
-	line-height: 1.8;
-	text-decoration: none;
-	color:  inherit;
-}
-
-.footer-distributed .footer-right{
-	float: right;
-	margin-top: 6px;
-	max-width: 180px;
-}
-
-.footer-distributed .footer-right a{
-	display: inline-block;
-	width: 35px;
-	height: 35px;
-	background-color:  #33383b;
-	border-radius: 2px;
-	font-size: 20px;
-	color: #ffffff;
-	text-align: center;
-	line-height: 35px;
-	margin-left: 3px;
-}
-
 /* CSS VOOR IMAGE
 CSS VOOR IMAGE */
 
 body, html {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   font: 400 15px/1.8 "Lato", sans-serif;
   color: #777;
@@ -451,16 +365,52 @@ figcaption p{
 	margin-left: 10px;
 }
 
-.footer{
-    position: relative;
-    bottom:0;
-    width:100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background: #004e81;
-    text-align: center;
-    color: white;
+html {
+	position: relative;
+	min-height: 100%;
 }
+
+body {
+	margin: 0 0 125px;
+}
+#indexfooter{
+	background-color: #004e81;
+	position: relative;
+	left: 0;
+	bottom: 0;
+	height: 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+	width: 100%;
+    color: white;
+    text-align: center;
+}
+
+footer {
+	background-color: #004e81;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+	width: 100%;
+    color: white;
+    text-align: center;
+}
+
+/*.footer {*/
+    /*position: static;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    /*height: 40px;*/
+    /*width: 100%;*/
+    /*overflow:hidden;*/
+    /*background: #004e81;*/
+    /*color: white;*/
+    /*text-align: center;*/
+/*}*/
+
 /*MEDIA QUERY = RESPONSIVE AANPASSINGEN*/
 @media only screen and (max-width : 740px) {
 
@@ -526,4 +476,3 @@ figcaption p{
 			line-height: 1.8;
 	}
 }
-
