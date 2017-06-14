@@ -7,8 +7,9 @@ timeout = 1
 ser = serial.Serial(port, baudrate, timeout=timeout)
 
 def getGpsData():
-    status2 = 0
     status1 = 0
+    status2 = 0
+    status3 = 0
     gpsDataList = []
     # voor altitude
     while status1 == 0:
@@ -31,3 +32,10 @@ def getGpsData():
             gpsDataList.append(data[7]) #speed --> 7
             status2 = 1
     return gpsDataList
+
+def convertData():
+    gpsDataList = getGpsData()
+
+    print(gpsDataList)
+
+convertData()
