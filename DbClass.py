@@ -196,7 +196,7 @@ class DbClass:
 # ------------------------------------------------------------------------------------------------
     def getSpeedAndTime(self, paraID):
         # Query zonder parameters
-        sqlQuery = "SELECT speed, time FROM dbtrackboard.tblgps WHERE sessionID = '" + paraID + "';"
+        sqlQuery = "SELECT truncate(speed, 2), time FROM dbtrackboard.tblgps WHERE sessionID = '" + paraID + "';"
         self.__cursor.execute(sqlQuery)
         result = self.__cursor.fetchall()
         #self.__cursor.close() # PAS SLUITEN NA ALLE QUERIES

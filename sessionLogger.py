@@ -43,20 +43,18 @@ try:
             if not GPIO.input(drukknop):
                 GPIO.output(ledGroen, 1)
                 GPIO.output(ledRood, 0)
-                # Sessie recording ------------
-                time.sleep(1)
+                time.sleep(1) #anders start de sessie niet!!
                 while GPIO.input(drukknop) == 1:
-                    knop = GPIO.input(drukknop)
-                    db.setNewGpsLine(gpsData.getTime(), gpsData.getGpsData()[5], gpsData.getGpsData()[6], gpsData.getGpsData()[7], "99", gpsData.getGpsData()[0], "8")
+                    if gpsData.getGpsData()[1] != 0: #Als de gps connectie heeft met een satteliet
+                        db.setNewGpsLine(gpsData.getTime(), gpsData.getDecLat(), gpsData.getDecLong(), gpsData.getSpeed(), "00", gpsData.getGpsData()[0], "11")
+                        print("Data inserted successfully ")
+                    else:
+                        print("No connection with satellite")
                     #db.setNewGpsLine(time, latitude, longitude, speed, course, altitude, sessionID)
-
-                    print("insert succesvol")
-                    time.sleep(0.5)
                 #-----------------------------
                 #Rode led laten branden zodat gebruiker weet dat recording gestopt is -------
                 GPIO.output(ledGroen, 0)
                 GPIO.output(ledRood, 0)
-                # -----------------------------
                 # Data verwerken -----------------------------
                 print(list)
                 list.clear()
