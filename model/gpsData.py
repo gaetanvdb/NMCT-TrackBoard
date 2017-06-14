@@ -28,3 +28,4 @@ def getGpsData():
     return gpsDataList
 
 print(getGpsData())
+;
