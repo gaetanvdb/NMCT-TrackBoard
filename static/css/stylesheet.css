@@ -281,10 +281,6 @@ body, html {
 .wrapper {
 	text-align: center;
 }
-.wrapper H1{
-    margin-top: -50px;
-    margin-bottom: 40px;
-}
 .wrapper img{
 	vertical-align: middle;
 }

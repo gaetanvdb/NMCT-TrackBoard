@@ -53,6 +53,8 @@ class DbClass:
         result = self.__cursor.fetchone()
         # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
         return result
+#------------------- 3 IN 1 --------------
+    #SELECT COUNT(sessionID) as 'Total Sessions', SEC_TO_TIME(SUM(TIME_TO_SEC(stopTime) - TIME_TO_SEC(startTime))) AS 'Total Time', SEC_TO_TIME(AVG(TIME_TO_SEC(stopTime) - TIME_TO_SEC(startTime))) AS 'AvG Time' FROM tblsessions WHERE date > (NOW() - INTERVAL 7 DAY);
 # ------------------------------------------------------------------------------------------------
     def getWeekTopSpeed(self):
         # Query zonder parameters
@@ -97,11 +99,9 @@ class DbClass:
         result = self.__cursor.fetchone()
         self.__cursor.close()
         return result
-
+# ------------------- 5 IN 1 --------------
+    # SELECT TRUNCATE(MAX(speed),2) as 'Max Speed', TRUNCATE(AVG(speed),2) as 'AVG Speed', TRUNCATE(MAX(altitude),2) as 'Max altitude', TRUNCATE(MIN(altitude),2) as 'Min altitude', TRUNCATE((MAX(altitude) - MIN(altitude)),2) as 'Altitude difference' FROM tblgps WHERE sessionID IN (SELECT sessionID FROM tblsessions WHERE tblsessions.date > (NOW() - INTERVAL 7 DAY));
 # ------------------------------------------------------------------------------------------------
-
-
-
     # ------------------------------------------------------------------------------------------------
     # Queries for TOTAL
     # ------------------------------------------------------------------------------------------------
@@ -278,8 +278,6 @@ class DbClass:
         return result
 #######################################################################################################
 
-
-
     def getDataFromDatabase(self):
         # Query zonder parameters
         sqlQuery = "SELECT * FROM tablename"
@@ -309,3 +307,39 @@ class DbClass:
         self.__cursor.execute(sqlCommand)
         self.__connection.commit()
         self.__cursor.close()
+
+
+#----------------------------------------------------------------------------------
+    # New session with date and starttime
+    def setNewSession(self, date, startTime):
+        # Query met parameters
+        sqlQuery = "INSERT INTO tblsessions (date, startTime) VALUES ('{param1}', '{param2}');"
+        # Combineren van de query en parameter
+        sqlCommand = sqlQuery.format(param1=date, param2=startTime)
+
+        self.__cursor.execute(sqlCommand)
+        self.__connection.commit()
+        #self.__cursor.close()
+
+    #Log gps data for new session
+    def setNewGpsLine(self, time, latitude, longitude, speed, course, altitude, sessionID ):
+        # Query met parameters
+        sqlQuery = "INSERT INTO tblgps (time, latitude, longitude, speed, course, altitude, sessionID) VALUES ('{param1}', '{param2}', '{param3}', '{param4}', '{param5}', '{param6}', '{param7}');"
+        # Combineren van de query en parameter
+        sqlCommand = sqlQuery.format(param1=time, param2=latitude, param3=longitude, param4=speed, param5=course, param6=altitude, param7=sessionID)
+
+        self.__cursor.execute(sqlCommand)
+        self.__connection.commit()
+        #self.__cursor.close()
+
+    # If the session is done, add the endTime
+    def updateSession(self, stopTime):
+        # Query met parameters
+        sqlQuery = "UPDATE tblsessions SET stopTime = '{param1}' ORDER BY sessionID DESC LIMIT 1;"
+        # Combineren van de query en parameter
+        sqlCommand = sqlQuery.format(param1=stopTime)
+
+        self.__cursor.execute(sqlCommand)
+        self.__connection.commit()
+        self.__cursor.close()
+# ----------------------------------------------------------------------------------
