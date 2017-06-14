@@ -351,5 +351,5 @@ class DbClass:
 
         self.__cursor.execute(sqlCommand)
         self.__connection.commit()
-        self.__cursor.close()
+        #self.__cursor.close()
 # ----------------------------------------------------------------------------------

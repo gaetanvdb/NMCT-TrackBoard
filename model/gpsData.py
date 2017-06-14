@@ -58,5 +58,3 @@ def getDecLong():
     longSecond = float(degreesLong[3:-1])
     longDecimal = longFirst + longSecond / 60
     return longDecimal
-
-print(datetime.now())

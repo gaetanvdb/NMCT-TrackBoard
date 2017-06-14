@@ -110,47 +110,10 @@ def total():
 def test():
     return render_template("test.html")
 
-
-#---------------------------------------------
-def startRecording():
-    import sessionLogger
-
-def startStartRecording():
-    import RPi.GPIO as GPIO
-    import time
-    import os
-
-    GPIO.setwarnings(False)
-
-    led = 16
-    drukknop = 21
-
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(led, GPIO.OUT)
-    GPIO.setup(drukknop, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-    knop = GPIO.input(drukknop)
-    print("programming is running!!!")
-    try:
-        while True:
-            knop = GPIO.input(drukknop)
-            if knop:
-                pass
-            else:
-                startRecording()
-
-    except KeyboardInterrupt:
-        GPIO.output(led, GPIO.LOW)
-
-    print("einde")
-    GPIO.cleanup()
-#---------------------------------------------
-
-
 if __name__ == '__main__':
     #flask op pc:
     #app.run
 
     #flask op pi:
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
