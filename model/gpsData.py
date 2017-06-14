@@ -1,5 +1,6 @@
 import serial
 import time
+from _datetime import datetime, timedelta
 
 port = "/dev/serial0"
 baudrate = 9600
@@ -33,9 +34,27 @@ def getGpsData():
             status2 = 1
     return gpsDataList
 
+def getTime():
+    vartime = 0
+    vardate = 0
+    status = 0
+    while status == 0:
+        line = str(ser.readline())
+        data = line.split(",")
+        if data[0] == "b'$GPRMC":
+            vartime = data[1]
+            vardate = data[9]
+            status = 1
+    utcDateTime = datetime(year= 2000 + int(vardate[4:6]),month=int(vardate[2:4]), day=int(vardate[0:2]), hour=int(vartime[0:2]), minute=int(vartime[2:4]), second=int(vartime[4:6]))
+    gmtDateTime = utcDateTime + timedelta(hours=2)
+    return gmtDateTime
+
+fullDateTime = getTime()
+datum = datetime.date(fullDateTime)
+tijd = datetime.time(fullDateTime)
+print(tijd)
+
+
 def convertData():
     gpsDataList = getGpsData()
-
-    print(gpsDataList)
-
 convertData()
