@@ -18,19 +18,17 @@ def getGpsData():
         data = line.split(",")
         if data[0] == "b'$GPGGA":
             gpsDataList.append(data[9])  #altitude --> 0
-            gpsDataList.append(data[6]) #gpsFix --> 1
-            gpsDataList.append(data[7]) #usedSat --> 2
             status1 = 1
     # voor Time, date, latitude, longitude, speed
     while status2 == 0:
         line = str(ser.readline())
         data = line.split(",")
         if data[0] == "b'$GPRMC":
-            gpsDataList.append(data[1]) #time --> 3
-            gpsDataList.append(data[9]) #date --> 4
-            gpsDataList.append(data[3]) #latitude --> 5
-            gpsDataList.append(data[5]) #longitude --> 6
-            gpsDataList.append(data[7]) #speed --> 7
+            gpsDataList.append(data[1]) #time --> 1
+            gpsDataList.append(data[9]) #date --> 2
+            gpsDataList.append(data[3]) #latitude --> 3
+            gpsDataList.append(data[5]) #longitude --> 4
+            gpsDataList.append(data[7]) #speed --> 5
             status2 = 1
     return gpsDataList
 
@@ -48,12 +46,6 @@ def getTime():
     utcDateTime = datetime(year= 2000 + int(vardate[4:6]),month=int(vardate[2:4]), day=int(vardate[0:2]), hour=int(vartime[0:2]), minute=int(vartime[2:4]), second=int(vartime[4:6]))
     gmtDateTime = utcDateTime + timedelta(hours=2)
     return gmtDateTime
-
-fullDateTime = getTime()
-datum = datetime.date(fullDateTime)
-tijd = datetime.time(fullDateTime)
-print(tijd)
-
 
 def convertData():
     gpsDataList = getGpsData()

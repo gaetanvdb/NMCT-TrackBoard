@@ -47,7 +47,9 @@ try:
                 time.sleep(1)
                 while GPIO.input(drukknop) == 1:
                     knop = GPIO.input(drukknop)
-                    db.setNewGpsLine(gpsData.getGpsData()[3], gpsData.getGpsData()[5], gpsData.getGpsData()[6], gpsData.getGpsData()[7], "99", gpsData.getGpsData()[0], "8")
+                    db.setNewGpsLine(gpsData.getTime(), gpsData.getGpsData()[5], gpsData.getGpsData()[6], gpsData.getGpsData()[7], "99", gpsData.getGpsData()[0], "8")
+                    #db.setNewGpsLine(time, latitude, longitude, speed, course, altitude, sessionID)
+
                     print("insert succesvol")
                     time.sleep(0.5)
                 #-----------------------------
