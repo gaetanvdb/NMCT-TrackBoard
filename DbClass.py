@@ -321,6 +321,16 @@ class DbClass:
         self.__connection.commit()
         #self.__cursor.close()
 
+    #Select the last sessionID
+    def getLastSessionID(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT sessionID FROM tblsessions ORDER BY sessionID DESC LIMIT 1;"
+
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        #self.__cursor.close()
+        return result
+
     #Log gps data for new session
     def setNewGpsLine(self, time, latitude, longitude, speed, course, altitude, sessionID ):
         # Query met parameters

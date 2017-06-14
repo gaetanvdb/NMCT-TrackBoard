@@ -24,6 +24,9 @@ button='up'
 session='NOT-recording'
 list = []
 
+def startWebserver():
+    import TrackBoard
+
 try:
     while True:
         if (button=='up'   and   session == 'NOT-recording'):
@@ -41,12 +44,14 @@ try:
 
         elif (button=='up' and session=='recording'):
             if not GPIO.input(drukknop):
+                print("A new session just started")
                 GPIO.output(ledGroen, 1)
                 GPIO.output(ledRood, 0)
                 time.sleep(1) #anders start de sessie niet!!
+                db.setNewSession(gpsData.getTime(), gpsData.getTime())
                 while GPIO.input(drukknop) == 1:
                     if gpsData.getGpsData()[1] != 0: #Als de gps connectie heeft met een satteliet
-                        db.setNewGpsLine(gpsData.getTime(), gpsData.getDecLat(), gpsData.getDecLong(), gpsData.getSpeed(), "00", gpsData.getGpsData()[0], "11")
+                        db.setNewGpsLine(gpsData.getTime(), gpsData.getDecLat(), gpsData.getDecLong(), gpsData.getSpeed(), "00", gpsData.getGpsData()[0], db.getLastSessionID()[0])
                         print("Data inserted successfully ")
                     else:
                         print("No connection with satellite")
@@ -61,13 +66,14 @@ try:
                 # -----------------------------
                 button = 'down'
                 session = 'NOT-recording'
+                db.updateSession(gpsData.getTime()) #Session EndTime
+                print("Session just ended!")
                 for i in range(5):
                     GPIO.output(ledRood, 1)
                     time.sleep(0.2)
                     GPIO.output(ledRood, 0)
                     time.sleep(0.2)
 
-                sys.exit("Gedaan")
         elif (button=='down' and session=='NOT-recording'):
             if GPIO.input(drukknop):
                 button='up'
