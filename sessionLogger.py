@@ -78,8 +78,8 @@ try:
             if GPIO.input(drukknop):
                 button='up'
         time.sleep(0.1)
-except KeyboardInterrupt:
-    print("KeyboardInterrupt detected")
+except:
+    print("Stopped")
     GPIO.output(ledGroen, GPIO.LOW)
     GPIO.output(ledRood, GPIO.LOW)
     GPIO.cleanup()
