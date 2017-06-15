@@ -1,6 +1,9 @@
 from DbClass import DbClass
 db = DbClass()
 
+#db.setNewSession('2010-10-10', '10:00:00')
+#db.updateSession('11:00:00')
+
 import RPi.GPIO as GPIO
 import time
 import sys
@@ -20,6 +23,9 @@ GPIO.setup(drukknop, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 button='up'
 session='NOT-recording'
 list = []
+
+def startWebserver():
+    import TrackBoard
 
 try:
     while True:
@@ -44,7 +50,7 @@ try:
                 time.sleep(1) #anders start de sessie niet!!
                 db.setNewSession(gpsData.getTime(), gpsData.getTime())
                 while GPIO.input(drukknop) == 1:
-                    if gpsData.getGpsData()[1] != 0: #Als de gps connectie heeft met een satteliet
+                    if float(gpsData.getGpsData()[1]) != 0: #Als de gps connectie heeft met een satteliet
                         db.setNewGpsLine(gpsData.getTime(), gpsData.getDecLat(), gpsData.getDecLong(), gpsData.getSpeed(), "00", gpsData.getGpsData()[0], db.getLastSessionID()[0])
                         print("Data inserted successfully ")
                     else:
@@ -72,8 +78,9 @@ try:
             if GPIO.input(drukknop):
                 button='up'
         time.sleep(0.1)
-except:
+except Exception as e:
     print("Stopped")
+    print(e)
     GPIO.output(ledGroen, GPIO.LOW)
     GPIO.output(ledRood, GPIO.LOW)
     GPIO.cleanup()
