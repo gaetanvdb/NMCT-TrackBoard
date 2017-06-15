@@ -3,8 +3,6 @@ db = DbClass()
 
 import RPi.GPIO as GPIO
 import time
-import sys
-from model import gpsData
 
 GPIO.setwarnings(False)
 
@@ -24,10 +22,10 @@ try:
     while True:
         if (button=='up'   and   session == 'NOT-recording'):
             # wait for button press before changing anything
-            GPIO.output(ledRood, 1)
-            GPIO.output(ledGroen, 0)
             if not GPIO.input(drukknop):
-
+                GPIO.output(ledRood, 1)
+                GPIO.output(ledGroen, 0)
+                print("Programma in stand-by")
                 button='down'
                 session = 'recording'
 
@@ -37,30 +35,32 @@ try:
                 button='up'
 
         elif (button=='up' and session=='recording'):
-            if GPIO.input(drukknop):
+            if not GPIO.input(drukknop):
                 print("A new session just started")
                 GPIO.output(ledGroen, 1)
                 GPIO.output(ledRood, 0)
                 time.sleep(1) #anders start de sessie niet!!
+                from model import gpsData
                 db.setNewSession(gpsData.getTime(), gpsData.getTime())
-                while GPIO.input(drukknop) == 1:
+                #-----------------------------
+                while GPIO.input(drukknop):
                     if float(gpsData.getGpsData()[1]) != 0: #Als de gps connectie heeft met een satteliet
-                        db.setNewGpsLine(gpsData.getTime(), gpsData.getDecLat(), gpsData.getDecLong(), gpsData.getSpeed(), "00", gpsData.getGpsData()[0], db.getLastSessionID()[0])
+                        db.setNewGpsLine(gpsData.getTime(), gpsData.getDecLat(), gpsData.getDecLong(),gpsData.getSpeed(), "00", gpsData.getGpsData()[0], db.getLastSessionID()[0])
                         print("Data inserted successfully ")
                     else:
                         print("No connection with satellite")
-                GPIO.output(ledGroen, 0)
-                GPIO.output(ledRood, 0)
-                # Data verwerken -----------------------------
+                # -----------------------------
                 db.updateSession(gpsData.getTime()) #Session EndTime
-                print("Session just ended!")
+                GPIO.output(ledGroen, 0)
+                print("Logging DONE")
                 for i in range(5):
                     GPIO.output(ledRood, 1)
                     time.sleep(0.2)
                     GPIO.output(ledRood, 0)
                     time.sleep(0.2)
-                button = 'up'
+                button = 'down'
                 session = 'NOT-recording'
+                break
 
 except:
     print("Stopped")
