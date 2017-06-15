@@ -31,9 +31,10 @@ try:
     while True:
         if (button=='up'   and   session == 'NOT-recording'):
             # wait for button press before changing anything
+            GPIO.output(ledRood, 1)
+            GPIO.output(ledGroen, 0)
             if not GPIO.input(drukknop):
-                GPIO.output(ledRood, 1)
-                GPIO.output(ledGroen, 0)
+
                 button='down'
                 session = 'recording'
 
@@ -43,7 +44,7 @@ try:
                 button='up'
 
         elif (button=='up' and session=='recording'):
-            if not GPIO.input(drukknop):
+            if GPIO.input(drukknop):
                 print("A new session just started")
                 GPIO.output(ledGroen, 1)
                 GPIO.output(ledRood, 0)
@@ -78,9 +79,8 @@ try:
             if GPIO.input(drukknop):
                 button='up'
         time.sleep(0.1)
-except Exception as e:
+except:
     print("Stopped")
-    print(e)
     GPIO.output(ledGroen, GPIO.LOW)
     GPIO.output(ledRood, GPIO.LOW)
     GPIO.cleanup()

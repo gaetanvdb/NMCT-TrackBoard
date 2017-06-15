@@ -110,6 +110,11 @@ def total():
 def test():
     return render_template("test.html")
 
+# @app.before_first_request
+# def startup():
+#     import sessionLogger
+#     sessionLogger.start()
+
 if __name__ == '__main__':
     #flask op pc:
     #app.run
