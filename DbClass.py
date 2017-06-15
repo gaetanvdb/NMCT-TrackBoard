@@ -352,4 +352,7 @@ class DbClass:
         self.__cursor.execute(sqlCommand)
         self.__connection.commit()
         #self.__cursor.close()
+
+    def closeConnection(self):
+        self.__connection.close()
 # ----------------------------------------------------------------------------------
