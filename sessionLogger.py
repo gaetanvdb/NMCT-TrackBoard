@@ -1,9 +1,6 @@
 from DbClass import DbClass
 db = DbClass()
 
-#db.setNewSession('2010-10-10', '10:00:00')
-#db.updateSession('11:00:00')
-
 import RPi.GPIO as GPIO
 import time
 import sys
@@ -22,10 +19,6 @@ GPIO.setup(drukknop, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 button='up'
 session='NOT-recording'
-list = []
-
-def startWebserver():
-    import TrackBoard
 
 try:
     while True:
@@ -56,17 +49,9 @@ try:
                         print("Data inserted successfully ")
                     else:
                         print("No connection with satellite")
-                    #db.setNewGpsLine(time, latitude, longitude, speed, course, altitude, sessionID)
-                #-----------------------------
-                #Rode led laten branden zodat gebruiker weet dat recording gestopt is -------
                 GPIO.output(ledGroen, 0)
                 GPIO.output(ledRood, 0)
                 # Data verwerken -----------------------------
-                print(list)
-                list.clear()
-                # -----------------------------
-                button = 'down'
-                session = 'NOT-recording'
                 db.updateSession(gpsData.getTime()) #Session EndTime
                 print("Session just ended!")
                 for i in range(5):
@@ -74,11 +59,9 @@ try:
                     time.sleep(0.2)
                     GPIO.output(ledRood, 0)
                     time.sleep(0.2)
+                button = 'up'
+                session = 'NOT-recording'
 
-        elif (button=='down' and session=='NOT-recording'):
-            if GPIO.input(drukknop):
-                button='up'
-        time.sleep(0.1)
 except:
     print("Stopped")
     GPIO.output(ledGroen, GPIO.LOW)
