@@ -24,9 +24,6 @@ button='up'
 session='NOT-recording'
 list = []
 
-def startWebserver():
-    import TrackBoard
-
 try:
     while True:
         if (button=='up'   and   session == 'NOT-recording'):
