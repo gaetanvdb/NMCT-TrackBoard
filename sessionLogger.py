@@ -3,7 +3,7 @@ db = DbClass()
 
 import RPi.GPIO as GPIO
 import time
-
+from subprocess import call
 GPIO.setwarnings(False)
 
 drukknop  = 21
@@ -60,7 +60,7 @@ try:
                     time.sleep(0.2)
                 button = 'down'
                 session = 'NOT-recording'
-                break
+                call("sudo reboot", shell=True)
 
 except:
     print("Stopped")

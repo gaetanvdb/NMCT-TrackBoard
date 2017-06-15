@@ -3,7 +3,7 @@ class DbClass:
         import mysql.connector as connector
 
         self.__dsn = {
-            "host": "169.254.10.1",
+            "host": "127.0.0.1",
             "user": "root",
             "passwd": "root",
             "db": "dbtrackboard"
