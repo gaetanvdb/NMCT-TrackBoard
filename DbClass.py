@@ -4,8 +4,8 @@ class DbClass:
 
         self.__dsn = {
             "host": "127.0.0.1",
-            "user": "root",
-            "passwd": "root",
+            "user": "trackboard",
+            "passwd": "Tr@ckB0@rd",
             "db": "dbtrackboard"
         }
         self.__connection = connector.connect(**self.__dsn)
