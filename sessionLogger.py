@@ -1,4 +1,6 @@
 from DbClass import DbClass
+import distanceCalculator
+import sys, os
 db = DbClass()
 
 import RPi.GPIO as GPIO
@@ -35,6 +37,7 @@ try:
                 button='up'
 
         elif (button=='up' and session=='recording'):
+            time.sleep(0.3)
             if not GPIO.input(drukknop):
                 print("A new session just started")
                 GPIO.output(ledGroen, 1)
@@ -50,7 +53,16 @@ try:
                     else:
                         print("No connection with satellite")
                 # -----------------------------
-                db.updateSession(gpsData.getTime()) #Session EndTime
+                for i in range(5):
+                    GPIO.output(ledRood, 1)
+                    time.sleep(0.2)
+                    GPIO.output(ledRood, 0)
+                    time.sleep(0.2)
+                coordinates = db.getCoordinates(str(db.getLastSessionID()[0]))
+                print(coordinates)
+                totaleAfstand = distanceCalculator.afstandBerekenen(coordinates)
+                print(totaleAfstand)
+                db.updateSession(gpsData.getTime(), totaleAfstand) #Session EndTime
                 GPIO.output(ledGroen, 0)
                 print("Logging DONE")
                 for i in range(5):
@@ -62,8 +74,11 @@ try:
                 session = 'NOT-recording'
                 call("sudo reboot", shell=True)
 
-except:
-    print("Stopped")
+except Exception as e:
+    print("Stopped:" + str(e))
+    exc_type, exc_obj, exc_tb = sys.exc_info() #error type en lijn
+    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+    print(exc_type, fname, exc_tb.tb_lineno)
     GPIO.output(ledGroen, GPIO.LOW)
     GPIO.output(ledRood, GPIO.LOW)
     GPIO.cleanup()

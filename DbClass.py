@@ -269,6 +269,15 @@ class DbClass:
         return result
         # ------------------------------------------------------------------------------------------------
 
+    def getSessionDistance(self, paraID):
+        # Query zonder parameters
+        sqlQuery = "SELECT totalDistance FROM tblsessions WHERE sessionID = '" + paraID + "';"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        #self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+        # ------------------------------------------------------------------------------------------------
+
     def getSessionAltitudeDifference(self, paraID):
         # Query zonder parameters
         sqlQuery = "SELECT TRUNCATE((MAX(altitude) - MIN(altitude)),2) as 'Altitude difference' FROM tblgps WHERE sessionID = '" + paraID + "';"
@@ -343,11 +352,11 @@ class DbClass:
         #self.__cursor.close()
 
     # If the session is done, add the endTime
-    def updateSession(self, stopTime):
+    def updateSession(self, stopTime, totalDistance):
         # Query met parameters
-        sqlQuery = "UPDATE tblsessions SET stopTime = '{param1}' ORDER BY sessionID DESC LIMIT 1;"
+        sqlQuery = "UPDATE tblsessions SET stopTime = '{param1}', totalDistance = '{param2}' ORDER BY sessionID DESC LIMIT 1;"
         # Combineren van de query en parameter
-        sqlCommand = sqlQuery.format(param1=stopTime)
+        sqlCommand = sqlQuery.format(param1=stopTime, param2=totalDistance)
 
         self.__cursor.execute(sqlCommand)
         self.__connection.commit()

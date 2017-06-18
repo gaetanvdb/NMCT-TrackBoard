@@ -72,9 +72,8 @@ def sessiondetail(sessionID):
     sessionAverageSpeed = db.getSessionAverageSpeed(sessionID)
     sessionHighestAltitude = db.getSessionHighestAltitude(sessionID)
     sessionLowestAltitude = db.getSessionLowestAltitude(sessionID)
+    totaleAfstand = db.getSessionDistance(sessionID)
     sessionAltitudeDifference = db.getSessionAltitudeDifference(sessionID)
-
-    totaleAfstand = distanceCalculator.afstandBerekenen(coordinates)
     return render_template("sessiondetail.html", sessionID=sessionID, coordinates=coordinates, speedAndTime=speedAndTime, totaleAfstand=totaleAfstand, sessionBegin=sessionBegin, sessionEnd=sessionEnd, sessionDuration=sessionDuration, sessionTopSpeed=sessionTopSpeed, sessionAverageSpeed=sessionAverageSpeed, sessionHighestAltitude=sessionHighestAltitude, sessionLowestAltitude=sessionLowestAltitude, sessionAltitudeDifference=sessionAltitudeDifference)
 
 # -----------------------------------------------------------
