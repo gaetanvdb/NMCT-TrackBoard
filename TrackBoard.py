@@ -86,10 +86,11 @@ def weeklyoverview():
     averageTime = db.getWeekAverageTime()
     topSpeed = db.getWeekTopSpeed()
     averageSpeed = db.getWeekAverageSpeed()
+    totalDistance = db.getWeekTotalDistance()
     highestAltitude = db.getWeekHighestAltitude()
     lowestAltitude = db.getWeekLowestAltitude()
     altitudeDifference = db.getWeekAltitudeDifference()
-    return render_template("weeklyoverview.html", totalSessions=totalSessions, totalTime=totalTime, averageTime=averageTime, topSpeed=topSpeed, averageSpeed=averageSpeed, highestAltitude=highestAltitude, lowestAltitude=lowestAltitude, altitudeDifference=altitudeDifference)
+    return render_template("weeklyoverview.html", totalSessions=totalSessions, totalTime=totalTime, averageTime=averageTime, topSpeed=topSpeed, averageSpeed=averageSpeed, highestAltitude=highestAltitude, lowestAltitude=lowestAltitude, altitudeDifference=altitudeDifference, totalDistance=totalDistance)
 
 # -----------------------------------------------------------
 @app.route('/total')
@@ -100,10 +101,11 @@ def total():
     averageTime = db.getTotalAverageTime()
     topSpeed = db.getTotalTopSpeed()
     averageSpeed = db.getTotalAverageSpeed()
+    totalDistance = db.getTotalDistance()
     highestAltitude = db.getTotalHighestAltitude()
     lowestAltitude = db.getTotalLowestAltitude()
     altitudeDifference = db.getTotalAltitudeDifference()
-    return render_template("total.html", totalSessions=totalSessions, totalTime=totalTime, averageTime=averageTime, topSpeed=topSpeed, averageSpeed=averageSpeed, highestAltitude=highestAltitude, lowestAltitude=lowestAltitude, altitudeDifference=altitudeDifference)
+    return render_template("total.html", totalSessions=totalSessions, totalTime=totalTime, averageTime=averageTime, topSpeed=topSpeed, averageSpeed=averageSpeed, highestAltitude=highestAltitude, lowestAltitude=lowestAltitude, altitudeDifference=altitudeDifference, totalDistance=totalDistance)
 
 @app.route('/test')
 def test():

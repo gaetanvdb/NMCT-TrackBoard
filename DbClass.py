@@ -74,6 +74,14 @@ class DbClass:
         return result
 
 # ------------------------------------------------------------------------------------------------
+    def getWeekTotalDistance(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(SUM(totalDistance), 3) FROM tblsessions WHERE date > (NOW() - INTERVAL 7 DAY);"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        #self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+# ------------------------------------------------------------------------------------------------
     def getWeekHighestAltitude(self):
         # Query zonder parameters
         sqlQuery = "SELECT TRUNCATE(MAX(altitude),2) FROM tblgps WHERE sessionID IN (SELECT sessionID FROM tblsessions WHERE tblsessions.date > (NOW() - INTERVAL 7 DAY));"
@@ -145,6 +153,16 @@ class DbClass:
     def getTotalAverageSpeed(self):
         # Query zonder parameters
         sqlQuery = "SELECT TRUNCATE(AVG(speed),2) FROM tblgps;"
+        self.__cursor.execute(sqlQuery)
+        result = self.__cursor.fetchone()
+        # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
+        return result
+
+        # ------------------------------------------------------------------------------------------------
+
+    def getTotalDistance(self):
+        # Query zonder parameters
+        sqlQuery = "SELECT TRUNCATE(SUM(totalDistance), 3) FROM tblsessions;"
         self.__cursor.execute(sqlQuery)
         result = self.__cursor.fetchone()
         # self.__cursor.close() #PAS SLUITEN NA ALLE QUERIES
